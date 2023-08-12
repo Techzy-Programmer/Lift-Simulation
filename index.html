@@ -7,6 +7,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="flx">
-    This is the start of amazing lift simulation project!
+    <div class="settings">
+        <div class="prompt">
+            <label class="ipt-box" id="floor-data">
+                <input type="number" placeholder=" "/>
+                <span class="lbl">Floor count?</span>
+            </label>
+            <label class="ipt-box disabled" id="lift-data">
+                <input type="number" placeholder=" " value="1" disabled/>
+                <span class="lbl">Lift count?</span>
+            </label>
+        </div>
+        <div class="actions">
+            <button class="gen">Generate</button>
+            <button class="rst">Reset Simulation</button>
+        </div>
+    </div>
+
+    <div id="template" style="display: none;">
+        <div class="level flx"></div>
+        <div class="floor flx" style="flex-direction: column;">
+            <b class="nm">{{FLOOR}}<sup>{{POW}}</sup>&nbsp;Floor</b>
+            <div class="cmd flx">
+                <div class="up flx" style="--d: -1;">
+                    <img src="assets/up.png" alt="Go UP">
+                    <b>Up</b>
+                </div>
+                <div class="down flx">
+                    <img src="assets/down.png" alt="Go Down">
+                    <b>Down</b>
+                </div>
+            </div>
+        </div>
+        <div class="lift flx">
+            <div class="udoor"></div>
+            <div class="ddoor"></div>
+        </div>
+    </div>
+
+    <div class="apartment flx">
+        <div class="building"></div>
+        <div class="base"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

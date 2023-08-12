@@ -10,8 +10,220 @@
     justify-content: center;
 }
 
+::selection {
+    background: #b2b2b2bd;
+}
+
 body {
-    height: 100vh;
-    height: 100dvh;
+    min-width: 100vw;
+    width: max-content;
+    min-height: 100vh;
+    height: fit-content;
     text-align: center;
+    flex-direction: column;
+    justify-content: space-between !important;
+    background: linear-gradient(#a9c4c9, #d1cddb);
+}
+
+.settings {
+    margin-top: 5px;
+}
+
+.settings .ipt-box {
+    width: 140px;
+    font-size: 14px;
+    margin: 5px 4px;
+    text-align: left;
+    position: relative;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+.settings .ipt-box.disabled { filter: brightness(0.4) blur(0.4px); }
+
+.settings .ipt-box input {
+    width: 100%;
+    border: none;
+    padding: 6px;
+    outline: none;
+    font-size: 14px;
+    color: #0e0800;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    font-weight: bolder;
+    background: #fffede;
+    border: 2px solid #1b160199;
+    transition: border-color 0.3s ease;
+}
+
+.settings .ipt-box .lbl {
+    left: 4px;
+    top: 16px;
+    cursor: text;
+    letter-spacing: 1px;
+    color: #180e00a3;
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 0 5px;
+    overflow: hidden;
+    line-height: 100%;
+    position: absolute;
+    background: #fffede;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transform: translateY(-50%);
+    width: calc(100% - (12px * 2));
+    transition: top 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.settings .ipt-box input.dirty + .lbl, .settings .ipt-box input:focus + .lbl,
+.settings .ipt-box input:not(:placeholder-shown) + .lbl {
+    top: 0;
+    width: auto;
+    color: #180e00;
+    font-size: 10px;
+    padding: 2px 8px;
+    background: #fffede;
+    border-radius: 20px;
+}
+
+.settings .ipt-box input:not(:placeholder-shown),
+.settings .ipt-box input.dirty,
+.settings .ipt-box input:focus {
+    border: 1px solid #1b1b0170;
+    transition-delay: 0.1s
+}
+
+.settings .actions button {
+    outline: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #1e1e19ef;
+    font-weight: bolder;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    transition: all 0.4s ease;
+    text-transform: capitalize;
+    background-color: #ffffffc1;
+    border: 2px solid #004b00ea;
+}
+
+.settings .actions button:focus {
+    border-radius: 5px;
+}
+
+.settings .actions button.rst {
+    border: 2px solid #4b0000ea;    
+}
+
+.settings .actions button.rst:hover {
+    background-color: #fcbebe;
+    border: 2px solid #4b00009e;
+}
+
+.settings .actions button:hover {
+    background-color: #a8ffa8;
+    border: 2px solid #004b008f;
+}
+
+.apartment {
+    width: max-content;
+    flex-direction: column;
+}
+
+.apartment > .building {
+    width: min-content;
+    padding: 5px;
+    margin: 0 5px;
+    margin-top: 5px;
+    min-width: 140px;
+    padding-top: 15px;
+    border-radius: 15px 15px 0 0;
+    background: linear-gradient(#00171924, #00292b0a, #272f4063);
+}
+
+.apartment > .building .level {
+    border-bottom: 3px dashed #15001bc4;
+    background-color: var(--lvl-bg-clr);
+    transition: background-color 0.5s ease;
+    justify-content: space-between;
+    --lvl-bg-clr: #00ffba14;
+    width: 100%;
+}
+
+.apartment > .building .level .floor {
+    width: 80px;
+    height: 60px;
+    margin: 5px;
+    font-size: 13px;
+    border-radius: 4px;
+    color: #c0c0c0cc;
+    font-weight: bolder;
+    font-family: monospace;
+    justify-content: space-evenly;
+    background: radial-gradient(#17022e, #190023b3);
+}
+
+.apartment > .building .level .floor .cmd .up { color: #d5ff7b; }
+.apartment > .building .level .floor .cmd {
+    --d: 1;
+    width: 100%;
+    color: #ffd2a1;
+    user-select: none;
+    justify-content: space-evenly;
+}
+
+.apartment > .building .level .floor .cmd > div.hidden { display: none; }
+.apartment > .building .level .floor .cmd > div {
+    transition: transform 0.05s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.apartment > .building .level .floor .cmd > div:active { transform: rotate(calc(10deg * var(--d) * -1)) scale(1.2); }
+
+.apartment > .building .level .floor img {
+    width: 10px;
+    filter: hue-rotate(calc(80deg * var(--d)));
+}
+
+.apartment > .building .level .lift {
+    width: 50px;
+    height: 60px;
+    margin: 0 5px;
+    overflow: hidden;
+    border-radius: 5px;
+    flex-direction: column;
+    transition: transform 2s ease;
+    background-image: url('assets/lift.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.apartment > .building .level .lift > div {
+    --av: 1;
+    width: 100%;
+    height: 100%;
+    animation: none;
+    box-shadow: inset 0px 1px 20px -12px #ffdfd5;
+    background-color: #03071fef;
+}
+
+.apartment > .building .level .lift.anim > div {animation: doorAnim 3.2s ease-in-out;}
+.apartment > .building .level .lift > div.udoor { --av: -1; }
+
+@keyframes doorAnim {
+    0% { transform: translateY(0); }
+    20% { transform: translateY(calc(100% * var(--av) + (var(--av) * 2px))); }
+    80% { transform: translateY(calc(100% * var(--av) + (var(--av) * 2px))); }
+    100% { transform: translateY(0); }
+}
+
+.apartment > .base {
+    width: 100%;
+    height: 20px;
+    min-width: 160px;
+    border-radius: 5px 5px 0 0;
+    background-color: #000312bd;
 }
