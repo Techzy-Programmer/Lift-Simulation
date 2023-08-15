@@ -10,12 +10,16 @@
     <div class="settings">
         <div class="prompt">
             <label class="ipt-box" id="floor-data">
-                <input type="number" placeholder=" "/>
-                <span class="lbl">Floor count?</span>
+                <input type="number" placeholder=" " min="1" value="8"/>
+                <span class="lbl">Floors?</span>
             </label>
-            <label class="ipt-box disabled" id="lift-data">
-                <input type="number" placeholder=" " value="1" disabled/>
-                <span class="lbl">Lift count?</span>
+            <label class="ipt-box" id="lift-data">
+                <input type="number" placeholder=" " min="1" value="2"/>
+                <span class="lbl">Lifts?</span>
+            </label>
+            <label class="ipt-box" id="speed-data">
+                <input type="number" placeholder=" " max="10" min="1" value="4"/>
+                <span class="lbl">Speed?</span>
             </label>
         </div>
         <div class="actions">
@@ -47,7 +51,9 @@
 
     <div class="apartment flx">
         <div class="building"></div>
-        <div class="base"></div>
+        <div class="base">
+            Made by: Rishabh Kumar
+        </div>
     </div>
 
     <script src="script.js"></script>
